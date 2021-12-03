@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
 
-function App() {
+import RichTextEditor from "./Components/RichTextEditor";
+
+import "./App.css";
+
+const App = () => {
+  const [value, setValue] = useState("");
+  const getValue = (value) => {
+    setValue(value);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="row">
+      <div className="col-md-6" style={{ margin: "auto", marginTop: "50px" }}>
+        <div style={{ textAlign: "center" }}>
+          <h3>Rich Text Editor</h3>
+        </div>
+        <RichTextEditor initialValue="" getValue={getValue} />
+        <br />
+        <div>{value}</div>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
